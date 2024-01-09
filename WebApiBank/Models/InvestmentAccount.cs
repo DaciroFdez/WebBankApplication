@@ -4,7 +4,7 @@ namespace WebApiBank.Models
 {
     public class InvestmentAccount : Base
     {
-        [Key] public int Id { get; set; }
+        [Key] public int InvestmentAccountId { get; set; }
         public int Amount { get; set; }
         public int AccountId { get; set; }
         public int InvestmentTypeId { get; set; }

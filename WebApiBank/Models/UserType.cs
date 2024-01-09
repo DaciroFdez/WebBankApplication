@@ -5,7 +5,7 @@ namespace WebApiBank.Models
     public class UserType : Base
     {
         [Key]
-        public int Id { get; set; }
+        public int UserTypeId { get; set; }
         public string UserTypeName { get; set; }
 
         public virtual ICollection<User> Users { get;}

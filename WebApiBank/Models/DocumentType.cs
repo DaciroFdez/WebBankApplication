@@ -6,7 +6,7 @@ namespace WebApiBank.Models
     public class DocumentType : Base
     {
         [Key]
-        public int Id { get; set; }
+        public int DocumentTypeId { get; set; }
         public string DocumentName { get; set; }
         public string Initial {  get; set; }
 

@@ -5,7 +5,7 @@ namespace WebApiBank.Models
     public class Site : Base
     {
         [Key]
-        public int Id { get; set; }
+        public int SiteId { get; set; }
         public string SiteName { get; set; }
 
         public virtual ICollection<User> Users { get; set; }

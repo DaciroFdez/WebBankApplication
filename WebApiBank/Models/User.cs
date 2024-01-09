@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Diagnostics.SymbolStore;
 
 namespace WebApiBank.Models
 {
@@ -8,7 +7,7 @@ namespace WebApiBank.Models
     {
         [Key]
         [Column("UserId")]
-        public int Id { get; set; }
+        public int UserId { get; set; }
         //Clave foranea
         [ForeignKey("DocumentType")]
         public int DocumentTypeId { get; set; }
@@ -25,6 +24,6 @@ namespace WebApiBank.Models
         public virtual DocumentType DocumentType { get; set; }
         public virtual UserType UserType { get; set; }
         public virtual Site Site { get; set; }
-        public virtual ICollection<UserAccount> UsersAccounts { get; set; }
+        public virtual ICollection<UserAccount> UsersAccount { get; set; }
     }
 }

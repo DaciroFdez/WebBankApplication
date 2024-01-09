@@ -4,7 +4,7 @@ namespace WebApiBank.Models
 {
     public class UserAccount
     {
-        [Key]public int Id { get; set; }
+        [Key]public int UserAccoutId { get; set; }
         public int UserId { get; set; }
         public int AccountId { get; set; }
 
