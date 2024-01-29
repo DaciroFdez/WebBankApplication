@@ -15,6 +15,6 @@ namespace WebApiBank.Models
 
         public virtual Account Account { get; set; }
         public virtual CardType CardType { get; set; }
-        public virtual CardReport Report { get; set; }
+        public virtual ICollection<CardReport> Report { get; set; }
     }
 }
