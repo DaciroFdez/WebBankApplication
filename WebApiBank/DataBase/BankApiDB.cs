@@ -3,8 +3,20 @@ using WebApiBank.Models;
 
 namespace WebApiBank.DataBase
 {
+    
     public class BankApiDB : DbContext
     {
+        public IConfiguration _config { get; set; }
+        public BankApiDB(IConfiguration config)
+        {
+            _config = config;
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer(_config.GetConnectionString("BankApiDB"));
+        }
+
         public DbSet<Account> Accounts { get; set; }
         public DbSet<AccountType> AccountTypes { get; set; }
         public DbSet<CardAccount> CardAccounts { get; set; }
@@ -22,6 +34,8 @@ namespace WebApiBank.DataBase
         public DbSet<User> Users { get; set; }
         public DbSet<UserAccount> UsersAccount { get; set; }
         public DbSet<UserType> UserTypes { get; set; }
+
+        
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -185,7 +199,12 @@ namespace WebApiBank.DataBase
                 .HasForeignKey(Transaction => Transaction.AccountDestinationId)
                 .IsRequired();
 
-            base.OnModelCreating(modelBuilder);
+            //Ajuste
+            modelBuilder.Entity<Transaction>()
+                .Property(Transaction => Transaction.Amount)
+                .HasColumnType("decimal(18, 2)");
+
+            //base.OnModelCreating(modelBuilder);
         }
     }
 }
