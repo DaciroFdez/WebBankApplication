@@ -6,16 +6,19 @@ namespace WebApiBank.DataBase
     
     public class BankApiDB : DbContext
     {
-        public IConfiguration _config { get; set; }
-        public BankApiDB(IConfiguration config)
-        {
-            _config = config;
-        }
+        //public IConfiguration _config { get; set; }
+        //public BankApiDB(IConfiguration config)
+        //{
+        //    _config = config;
+        //}
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer(_config.GetConnectionString("BankApiDB"));
-        }
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+        //    optionsBuilder.UseSqlServer(_config.GetConnectionString("BankApiDB"));
+        //}
+
+        public BankApiDB(DbContextOptions<BankApiDB> options) : base(options) { }
+        
 
         public DbSet<Account> Accounts { get; set; }
         public DbSet<AccountType> AccountTypes { get; set; }

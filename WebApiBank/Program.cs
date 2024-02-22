@@ -5,6 +5,11 @@ using WebApiBank.DataBase;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+// Variable para cadena de conexión
+var connectionString = builder.Configuration.GetConnectionString("BankApiDB");
+// Registrar servicio de conexion
+builder.Services.AddDbContext<BankApiDB>(options => 
+    options.UseSqlServer(connectionString));
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

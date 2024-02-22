@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace WebApiBank.Models
 {
@@ -21,9 +22,13 @@ namespace WebApiBank.Models
 
 
         //propiedad de navegación
+        [JsonIgnore]
         public virtual DocumentType DocumentType { get; set; }
+        [JsonIgnore]
         public virtual UserType UserType { get; set; }
+        [JsonIgnore]
         public virtual Site Site { get; set; }
+        [JsonIgnore]
         public virtual ICollection<UserAccount> UsersAccount { get; set; }
     }
 }
