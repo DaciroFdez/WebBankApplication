@@ -11,10 +11,10 @@ namespace WebApiBank.Models
         public string SiteName { get; set; }
 
         //[JsonIgnore]
-        [InverseProperty("Users")]
+        //[InverseProperty("Users")]
         public virtual ICollection<User> Users { get; set; }
         //[JsonIgnore]
-        [InverseProperty("Accounts")]
+        //[InverseProperty("Accounts")]
         public virtual ICollection<Account> Accounts { get; set; }
     }
 }

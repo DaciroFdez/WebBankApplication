@@ -12,6 +12,7 @@ namespace WebApiBank.Models
         [ForeignKey("Site")] public int SiteId { get; set; }
 
         public virtual AccountType AccountType { get; set;}
+        //[InverseProperty("Accounts")]
         public virtual Site Site { get; set;}
         public virtual ICollection<UserAccount> UserAccounts { get; set; }
         public virtual ICollection<CardAccount> CardAccount { get; set; }

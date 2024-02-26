@@ -22,7 +22,7 @@ namespace WebApiBank.Models
 
 
         //propiedad de navegación
-        [JsonIgnore]
+        
         public virtual DocumentType DocumentType { get; set; }
         [JsonIgnore]
         public virtual UserType UserType { get; set; }
