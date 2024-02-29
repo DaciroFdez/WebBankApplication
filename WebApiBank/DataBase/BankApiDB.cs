@@ -209,5 +209,39 @@ namespace WebApiBank.DataBase
 
             //base.OnModelCreating(modelBuilder);
         }
+
+        public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+        {
+            var addedEntities = ChangeTracker.Entries()
+            .Where(e => e.State == EntityState.Added && e.Entity is Base)
+            .Select(e => e.Entity as Base)
+            .ToList();
+
+            foreach (var entity in addedEntities)
+            {
+                
+                if (entity.CreatedDate == default)
+                    entity.CreatedDate = DateTime.Now;
+
+                if (string.IsNullOrEmpty(entity.CreatedBy))
+                    entity.CreatedBy = "User";
+
+                if (entity.UpdatedDate == default)
+                    entity.UpdatedDate = DateTime.Now;
+
+                if (string.IsNullOrEmpty(entity.UpdatedBy))
+                    entity.UpdatedBy = "User";
+
+                
+                if (entity.IsActive == default)
+                    entity.IsActive = 0;
+
+                if (entity.IsDelete == default)
+                    entity.IsDelete = 0;
+            }
+
+            return base.SaveChanges();
+        }
+
     }
 }

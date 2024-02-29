@@ -26,13 +26,13 @@ namespace WebApiBank.Controllers
                 var documentType = new DocumentType
                 {
                     DocumentName = documentTypeDTO.DocumentName,
-                    Initial = documentTypeDTO.Initial,
-                    CreatedDate = DateTime.Now,
-                    CreatedBy = "User",
-                    UpdatedDate = DateTime.Now,
-                    UpdatedBy = "User",
-                    IsActive = 0,
-                    IsDelete = 0
+                    Initial = documentTypeDTO.Initial
+                    //CreatedDate = DateTime.Now,
+                    //CreatedBy = "User",
+                    //UpdatedDate = DateTime.Now,
+                    //UpdatedBy = "User",
+                    //IsActive = 0,
+                    //IsDelete = 0
                 };
 
                 _dbContext.DocumentTypes.Add(documentType);
