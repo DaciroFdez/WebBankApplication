@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using WebApiBank.DataBase;
+using WebApiBank.DTOs;
 using WebApiBank.Models;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -34,10 +35,15 @@ namespace WebApiBank.Controllers
 
         // POST api/<SitesController>
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] Site site)
+        public async Task<IActionResult> Post([FromBody] SiteDTO siteDTO)
         {
             try
             {
+                var site = new Site()
+                {
+                    SiteName = siteDTO.SiteName
+                };
+
                 _dbContex.Sites.Add(site);
                 await _dbContex.SaveChangesAsync();
                 return Ok("Creado");
